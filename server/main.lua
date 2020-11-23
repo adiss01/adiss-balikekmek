@@ -40,7 +40,7 @@ AddEventHandler('adiss:para', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeInventoryItem(Config.bekmek, 1) 
     xPlayer.addMoney(Config.Fiyat, 1)
-     dclog(xPlayer, '1 Adet Balık Ekmek Karşılıgında -  ' ..Config.Fiyat..' $ Aldı')
+    dclog(xPlayer, '1 Adet Balık Ekmek Karşılıgında -  ' ..Config.Fiyat..' $ Aldı')
 end)
 
 
@@ -53,6 +53,15 @@ ESX.RegisterServerCallback("adiss:itemkontrol", function(source, cb, itemname)
     else
         cb(false) 
     end
+end)
+
+AddEventHandler('esx:onRemoveInventoryItem', function(source, item, count)
+	local _source = source
+    local xPlayer = ESX.GetPlayerFromId(_source)
+  
+	if item.name == 'balikekmek' and item.count < 1 then
+	  TriggerClientEvent('adiss:satısdur', source)
+	end
 end)
 
 function dclog(xPlayer, text)
