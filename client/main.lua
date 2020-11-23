@@ -468,4 +468,5 @@ AddEventHandler('adiss:satısdur', function()
     satisbasla = false
     musteriBulundu = false
     npcAra = false   
+    exports['mythic_notify']:SendAlert('error', 'Üzerinizde balık ekmek kalmadığı için iş durduruldu.')
 end)
