@@ -24,7 +24,6 @@ local satisbasla, musteriBulundu, npcAra = false, false, false
 
 RegisterNetEvent('adiss:basla')
 AddEventHandler('adiss:basla', function()
- 
     ESX.TriggerServerCallback("adiss:itemkontrol", function(output)
         if output and Config.minigame == true then
             minigame()
@@ -56,7 +55,7 @@ AddEventHandler('adiss:basla', function()
         elseif not output then 
             exports['mythic_notify']:SendAlert('error', 'Üzerinde yeterince balık yok')
         end
-    end, "balik")
+    end, "balik3")
 end)
 
 
@@ -87,9 +86,9 @@ AddEventHandler('adiss:paketle', function()
                 end
             end)
         elseif not output then 
-            exports['mythic_notify']:SendAlert('error', 'gerekliler: 2x marul, 1x ekmek, 1x temizlenmiş balık')
+            exports['mythic_notify']:SendAlert('error', 'gerekliler: 2x marul, 1x ekmek, 1x pişmiş balık')
         end
-    end, "balik3", "marul2", "bread")
+    end, "balik1", "marul2", "bread")
 end)
 
 RegisterNetEvent('adiss:balikt')
@@ -463,3 +462,10 @@ function DrawText3Ds(x, y, z, text)
     DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
     ClearDrawOrigin()
 end
+
+RegisterNetEvent('adiss:satısdur')
+AddEventHandler('adiss:satısdur', function()
+    satisbasla = false
+    musteriBulundu = false
+    npcAra = false   
+end)
