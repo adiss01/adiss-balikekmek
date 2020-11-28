@@ -50,5 +50,5 @@ Config.bolge = {
 }
 
 -- Log için webhook
-Config.webhook = 'https://discord.com/api/webhooks/779455744851443743/dDHEDR6e4oQwuWeDAw5PO3HjhFInJy-QQBjpQ-R-PWBF8Dw0CYr2nOOuTuR-_xEgghox'
+Config.webhook = 'CHANGE_ME'
 
