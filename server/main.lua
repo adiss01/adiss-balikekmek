@@ -57,7 +57,7 @@ end)
 
 AddEventHandler('esx:onRemoveInventoryItem', function(source, item, count)
 	local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
+    	local xPlayer = ESX.GetPlayerFromId(_source)
   
 	if item.name == 'balikekmek' and item.count < 1 then
 	  TriggerClientEvent('adiss:satısdur', source)
