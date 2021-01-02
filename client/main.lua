@@ -148,26 +148,16 @@ end)
 
 
 Citizen.CreateThread(function()
-    while true do 
-
-    Wait(sleep)
-    end
-end)
-
-Citizen.CreateThread(function()
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
     local dist = GetDistanceBetweenCoords(pos, Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z, true)
+    local dist2 = GetDistanceBetweenCoords(pos, Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z, true)
+    local dist3 = GetDistanceBetweenCoords(pos, Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z, true)
     local ped = PlayerPedId()
     local pos = GetEntityCoords(ped)
-    local dist = GetDistanceBetweenCoords(pos, Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z, true)
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
-    local dist = GetDistanceBetweenCoords(pos, Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z, true)
+
     local sleep = 2000
 
     while true do 
-        if dist < 1 then
+        if dist3 < 1 then
             sleep = 7
             DrawText3Ds(Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z , Config.bekmekdrwtxt)
             if IsControlJustReleased(0, 38) then
@@ -175,7 +165,7 @@ Citizen.CreateThread(function()
             end
         end
 
-        if dist < 1 then
+        if dist2 < 1 then
             sleep = 7
             DrawText3Ds(Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z , Config.balikt)
             if IsControlJustReleased(0, 38) then
@@ -197,11 +187,11 @@ end)
 
 
 Citizen.CreateThread(function()
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local dist = GetDistanceBetweenCoords(pos, Config.sat.x, Config.sat.y, Config.sat.z, true)
+    local sleep = 2000
     while true do 
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local dist = GetDistanceBetweenCoords(pos, Config.sat.x, Config.sat.y, Config.sat.z, true)
-        local sleep = 2000
         if Config.NPCSat == true then
             if dist < 1 and not satisbasla then
                 sleep = 7
@@ -261,6 +251,7 @@ AddEventHandler('adiss:sat', function()
 end)
 
 Citizen.CreateThread(function()
+    local wait = 2000
 	while true do
 		wait = 100
 		if satisbasla then
@@ -353,7 +344,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
-		Citizen.Wait(wait)
+	Citizen.Wait(wait)
 	end
 end)
 
