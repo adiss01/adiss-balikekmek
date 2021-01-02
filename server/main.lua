@@ -44,7 +44,7 @@ AddEventHandler('adiss:para', function()
 end)
 
 
-ESX.RegisterServerCallback("adiss:itemkontrol", function(source, cb, itemname)
+ESX.RegisterServerCallback("adiss:itemkontrol1", function(source, cb, itemname)
     local xPlayer = ESX.GetPlayerFromId(source)
     local item = xPlayer.getInventoryItem(itemname)["count"]
 
@@ -57,7 +57,7 @@ end)
 
 AddEventHandler('esx:onRemoveInventoryItem', function(source, item, count)
 	local _source = source
-    	local xPlayer = ESX.GetPlayerFromId(_source)
+    local xPlayer = ESX.GetPlayerFromId(_source)
   
 	if item.name == 'balikekmek' and item.count < 1 then
 	  TriggerClientEvent('adiss:satısdur', source)
