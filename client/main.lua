@@ -24,13 +24,13 @@ local satisbasla, musteriBulundu, npcAra = false, false, false
 
 RegisterNetEvent('adiss:basla')
 AddEventHandler('adiss:basla', function()
-    ESX.TriggerServerCallback("adiss:itemkontrol", function(output)
+    ESX.TriggerServerCallback("adiss:itemkontrol1", function(output)
         if output and Config.minigame == true then
             minigame()
-            local ped = GetPlayerPed(-1)
+            local ped = PlayerPedId()
             TaskStartScenarioInPlace(ped, "PROP_HUMAN_BBQ", 0, true)
         elseif output and Config.minigame == false then
-            local ped = GetPlayerPed(-1)
+            local ped = PlayerPedId()
             TaskStartScenarioInPlace(ped, "PROP_HUMAN_BBQ", 0, true)
             TriggerEvent('mythic_progbar:client:progress', {
                 name = 'ahah',
@@ -46,7 +46,7 @@ AddEventHandler('adiss:basla', function()
                 },
             }, function(status)
                 if not status then
-                    local ped = GetPlayerPed(-1)
+                    local ped = PlayerPedId()
                     TriggerServerEvent('adiss:removeitem', Config.tbalik, 1)
                     TriggerServerEvent('adiss:additem', Config.pbalik, 1)
                     ClearPedTasks(ped)
@@ -62,7 +62,7 @@ end)
 RegisterNetEvent('adiss:paketle')
 AddEventHandler('adiss:paketle', function()
 
-    ESX.TriggerServerCallback("adiss:itemkontrol", function(output)
+    ESX.TriggerServerCallback("adiss:itemkontrol1", function(output)
         if output then
             TriggerEvent('mythic_progbar:client:progress', {
                 name = 'ohoh',
@@ -94,7 +94,7 @@ end)
 RegisterNetEvent('adiss:balikt')
 AddEventHandler('adiss:balikt', function()
 
-    ESX.TriggerServerCallback("adiss:itemkontrol", function(output)
+    ESX.TriggerServerCallback("adiss:itemkontrol1", function(output)
         if output and Config.minigame2 == true then
             local playerPed = PlayerPedId()
             animasyon(playerPed, "anim@amb@business@coc@coc_unpack_cut_left@", "coke_cut_v1_coccutter")
@@ -149,69 +149,74 @@ end)
 
 Citizen.CreateThread(function()
     while true do 
-        local ped = GetPlayerPed(-1)
-        local pos = GetEntityCoords(ped)
-        local dist = GetDistanceBetweenCoords(pos, Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z, true)
 
-        Citizen.Wait(0)
-        if dist < 1 then
-            DrawText3Ds(Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z , Config.drwtxt)
-            if IsControlJustReleased(0, 38) then
-               TriggerEvent('adiss:basla')
-            end
-        end
+    Wait(sleep)
     end
 end)
 
 Citizen.CreateThread(function()
-    while true do 
-        local ped = GetPlayerPed(-1)
-        local pos = GetEntityCoords(ped)
-        local dist = GetDistanceBetweenCoords(pos, Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z, true)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local dist = GetDistanceBetweenCoords(pos, Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z, true)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local dist = GetDistanceBetweenCoords(pos, Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z, true)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local dist = GetDistanceBetweenCoords(pos, Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z, true)
+    local sleep = 2000
 
-        Citizen.Wait(0)
+    while true do 
         if dist < 1 then
+            sleep = 7
             DrawText3Ds(Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z , Config.bekmekdrwtxt)
             if IsControlJustReleased(0, 38) then
                TriggerEvent('adiss:paketle')
             end
         end
-    end
-end)
 
-Citizen.CreateThread(function()
-    while true do 
-        local ped = GetPlayerPed(-1)
-        local pos = GetEntityCoords(ped)
-        local dist = GetDistanceBetweenCoords(pos, Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z, true)
-
-        Citizen.Wait(0)
         if dist < 1 then
+            sleep = 7
             DrawText3Ds(Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z , Config.balikt)
             if IsControlJustReleased(0, 38) then
                TriggerEvent('adiss:balikt')
             end
         end
+
+
+        if dist < 1 then
+            sleep = 7
+            DrawText3Ds(Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z , Config.drwtxt)
+            if IsControlJustReleased(0, 38) then
+               TriggerEvent('adiss:basla')
+            end
+        end
+    Wait(sleep)
     end
 end)
 
+
 Citizen.CreateThread(function()
     while true do 
-        Citizen.Wait(0)
-        local ped = GetPlayerPed(-1)
+        local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
         local dist = GetDistanceBetweenCoords(pos, Config.sat.x, Config.sat.y, Config.sat.z, true)
+        local sleep = 2000
         if Config.NPCSat == true then
             if dist < 1 and not satisbasla then
+                sleep = 7
                 DrawText3Ds(Config.sat.x, Config.sat.y, Config.sat.z , Config.satisdrwtxt)
-                if IsControlJustReleased(0, 38) then
-                   --TriggerEvent('adiss:sat')
-                   exports['mythic_notify']:SendAlert('inform', 'işe başladın.')
-                   satisbasla = true
-                   musteriBulundu = false
-                   npcAra = true           
-                end
+                ESX.TriggerServerCallback("adiss:itemkontrol1", function(output)
+                    if IsControlJustReleased(0, 38) then
+                       --TriggerEvent('adiss:sat')
+                       exports['mythic_notify']:SendAlert('inform', 'işe başladın.')
+                       satisbasla = true
+                       musteriBulundu = false
+                       npcAra = true           
+                    end
+                end, "balikekmek")
             elseif dist < 1 and satisbasla then
+                sleep = 7
                 DrawText3Ds(Config.sat.x, Config.sat.y, Config.sat.z , Config.bitir)
                 if IsControlJustReleased(0, 38) then
                     satisbasla = false
@@ -220,12 +225,14 @@ Citizen.CreateThread(function()
                     exports['mythic_notify']:SendAlert('inform', 'işi bitirdin.')
                 end
             elseif satisbasla and dist > 100 then
+                sleep = 7
                 satisbasla = false
                 musteriBulundu = false
                 npcAra = false
                 exports['mythic_notify']:SendAlert('error', 'Bölgeden uzaklaştığın için işten çıktın')
             end
         end
+    Wait(sleep)
     end
 end)
 
@@ -233,7 +240,7 @@ RegisterNetEvent('adiss:sat')
 AddEventHandler('adiss:sat', function()
     local playerPed = PlayerPedId()
 
-    ESX.TriggerServerCallback("adiss:itemkontrol", function(output)
+    ESX.TriggerServerCallback("adiss:itemkontrol1", function(output)
         
         if not IsPedInAnyVehicle(playerPed) and output then			
             satisbasla = true
@@ -423,13 +430,13 @@ function minigame()
 end
 
 function anim()
-    local ped = GetPlayerPed(-1)
+    local ped = PlayerPedId()
     TaskStartScenarioInPlace(ped, "PROP_HUMAN_BBQ", 0, true)
 end
 
 
 function FinishMinigame(faults)
-    local ped = GetPlayerPed(-1)
+    local ped = PlayerPedId()
     
     if faults <= 2  then
         exports['mythic_notify']:SendAlert('inform', 'Sen 1 Adet Balık Eti Pişirdin!')
