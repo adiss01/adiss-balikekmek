@@ -22,21 +22,21 @@ AddEventHandler('adiss:ekmekyap', function()
     xPlayer.addInventoryItem(Config.bekmek, 1)
 end)
 
-RegisterServerEvent('adiss:additem')
-AddEventHandler('adiss:additem', function(itemname, count)
+RegisterServerEvent('adiss:additem2')
+AddEventHandler('adiss:additem2', function(itemname, count)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.addInventoryItem(itemname, count)
 end)
 
-RegisterServerEvent('adiss:removeitem')
-AddEventHandler('adiss:removeitem', function(itemname, count)
+RegisterServerEvent('adiss:removeitem2')
+AddEventHandler('adiss:removeitem2', function(itemname, count)
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeInventoryItem(itemname, count)
 end)
 
 
-RegisterServerEvent('adiss:para')
-AddEventHandler('adiss:para', function()
+RegisterServerEvent('adiss:para2')
+AddEventHandler('adiss:para2', function()
     local xPlayer = ESX.GetPlayerFromId(source)
     xPlayer.removeInventoryItem(Config.bekmek, 1) 
     xPlayer.addMoney(Config.Fiyat, 1)
@@ -44,7 +44,7 @@ AddEventHandler('adiss:para', function()
 end)
 
 
-ESX.RegisterServerCallback("adiss:itemkontrol1", function(source, cb, itemname)
+ESX.RegisterServerCallback("itemkontrol1", function(source, cb, itemname)
     local xPlayer = ESX.GetPlayerFromId(source)
     local item = xPlayer.getInventoryItem(itemname)["count"]
 
@@ -55,14 +55,6 @@ ESX.RegisterServerCallback("adiss:itemkontrol1", function(source, cb, itemname)
     end
 end)
 
-AddEventHandler('esx:onRemoveInventoryItem', function(source, item, count)
-	local _source = source
-    local xPlayer = ESX.GetPlayerFromId(_source)
-  
-	if item.name == 'balikekmek' and item.count < 1 then
-	  TriggerClientEvent('adiss:satısdur', source)
-	end
-end)
 
 function dclog(xPlayer, text)
     local playerName = Sanitize(xPlayer.getName())
