@@ -31,7 +31,7 @@ Config.tbalik = 'balik3' -- temizlenmiş balık itemi
 Config.drwtxt = '[ ~g~ E ~w~ - Balık Pisir ]'
 Config.bekmekdrwtxt = '[ ~g~ E ~w~ - Balık Ekmek Yap ]'
 Config.satisdrwtxt = '[ ~g~ E ~w~ - Satısa Basla ]'
-Config.bitir = '[ ~g~ E ~w~ - Satısı Bitir ]'
+Config.bitir = '[ ~g~ H ~w~ - Satısı Bitir ]'
 Config.balikt = '[ ~g~ E ~w~ - Balık Temizle ]'
 
 --- minigame yada progbar kullanabilirsin yada npcye satışı kapatabilirsin
@@ -50,5 +50,5 @@ Config.bolge = {
 }
 
 -- Log için webhook
-Config.webhook = 'CHANGE_ME'
+Config.webhook = 'https://discord.com/api/webhooks/779455744851443743/dDHEDR6e4oQwuWeDAw5PO3HjhFInJy-QQBjpQ-R-PWBF8Dw0CYr2nOOuTuR-_xEgghox'
 
