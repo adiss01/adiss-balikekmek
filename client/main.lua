@@ -4,7 +4,7 @@
      __ _  __| |_ ___ ___|_  __  _|___ \|___ \|___ \|___ \ 
     / _` |/ _` | / __/ __|_| || |_    \ \   \ \   \ \   \ \
    | (_| | (_| | \__ \__ \_  __  _/\__/ /\__/ /\__/ /\__/ /
-   \__,_|\__,_|_|___/___/ |_||_| \____/\____/\____/\____/     ^adişş 🔥#5555 
+   \__,_|\__,_|_|___/___/ |_||_| \____/\____/\____/\____/     adişş#5555 
 ]]
          
 
@@ -223,11 +223,11 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-    local ped = PlayerPedId()
-    local pos = GetEntityCoords(ped)
-    local dist = GetDistanceBetweenCoords(pos, Config.sat.x, Config.sat.y, Config.sat.z, true)
-    local sleep = 2000
     while true do 
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local dist = GetDistanceBetweenCoords(pos, Config.sat.x, Config.sat.y, Config.sat.z, true)
+        local sleep = 2000
         if Config.NPCSat == true then
             if dist < 1 and not satisbasla then
                 sleep = 7
@@ -244,7 +244,7 @@ Citizen.CreateThread(function()
             elseif dist < 1 and satisbasla then
                 sleep = 7
                 DrawText3Ds(Config.sat.x, Config.sat.y, Config.sat.z , Config.bitir)
-                if IsControlJustReleased(0, 38) then
+                if IsControlJustReleased(0, 74) then
                     satisbasla = false
                     musteriBulundu = false
                     npcAra = false
