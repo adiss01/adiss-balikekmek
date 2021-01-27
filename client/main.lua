@@ -146,45 +146,6 @@ AddEventHandler('adiss:balikt', function()
 end)
 
 
--- Citizen.CreateThread(function()
---     local dist = GetDistanceBetweenCoords(pos, Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z, true)
---     local dist2 = GetDistanceBetweenCoords(pos, Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z, true)
---     local dist3 = GetDistanceBetweenCoords(pos, Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z, true)
---     local ped = PlayerPedId()
---     local pos = GetEntityCoords(ped)
---     local sleep = 2000
-
---     while true do 
---         if dist3 < 1 then
---             sleep = 7
---             DrawText3Ds(Config.ekmekyap.x, Config.ekmekyap.y, Config.ekmekyap.z , Config.bekmekdrwtxt)
---             if IsControlJustReleased(0, 38) then
---                TriggerEvent('adiss:paketle')
---             end
---         end
-
---         if dist2 < 1 then
---             sleep = 7
---             DrawText3Ds(Config.tbalikk.x, Config.tbalikk.y, Config.tbalikk.z , Config.balikt)
---             if IsControlJustReleased(0, 38) then
---                TriggerEvent('adiss:balikt')
---             end
---         end
-
-
---         if dist < 1 then
---             sleep = 7
---             DrawText3Ds(Config.Balikyeri.x, Config.Balikyeri.y, Config.Balikyeri.z , Config.drwtxt)
---             if IsControlJustReleased(0, 38) then
---                TriggerEvent('adiss:basla')
---             end
---         end
-
---     Wait(sleep)
---     end
--- end)
-
-
 
 Citizen.CreateThread(function()
     while true do 
